@@ -102,20 +102,49 @@
                     $value['title'] = substr($value['title'], -0, 20) . "...";
                   }
 
+                  switch ($value['titleType']) {
+                    case 'tvSeries':
+                      $titleType = "Serial";
+                      break;
+                    case 'movie':
+                      $titleType = "Film";
+                      break;
+                    default:
+                      $titleType = $value['titleType'];
+                      break;
+                  }
+
+                  if (($titleType == 'Serial') && (isset($value['numberOfEpisodes']))) {
+                    $durationDetails = '<i class="mr-2 fas fa-sort-numeric-up"></i>'.$value['numberOfEpisodes'].' Ilość odcinków';
+                  }else{
+                    $durationDetails = '<i class="mr-2 fas fa-sort-numeric-up"></i>'.$value['runningTimeInMinutes'].' minut';
+                  }
+
+                  if (($titleType == 'Serial') && (isset($value['seriesEndYear']))) {
+                    $yearEnd = ' - '.$value['seriesEndYear'];
+                  }else{
+                    $yearEnd = '';
+                  }
+
                   $url = $value['id'];
                   $title = $value['title'];
+                  $year = $value['year'];
+
+                  //geting movie id by url
                   $id = $url;
                   $id = substr($id, 7);
                   $id = substr($id, 0, -1);
+
                   echo <<<DESC
                   <div class="col-lg-3 col-6">
                     <div class="small-box bg-info">
                       <div class="inner">
                         <div class="row">
                           <div class="col-sm-7">
-                            <h3>$value[title]</h3>
-                            <p><i class="fas fa-star"></i> - placeholder   IMDb<br><i class="fas fa-grin-stars"></i> -  Własna</p>
-                            <p><i class="fas fa-video"></i> - placeholder<br><i class="fas fa-calendar"></i> - </p>
+                            <h3>$title</h3>
+                            <i class="mr-2 fas fa-video"></i>$titleType<br>
+                            $durationDetails<br><br>
+                            <i class="mr-2 fas fa-calendar"></i>$year $yearEnd</p>
                           </div>
                           <!-- <div class="col-sm-4">
                           <br>
