@@ -39,16 +39,20 @@ if ($err) {
     $titleType = $arrmovie['title']['titleType'];
     $image = $arrmovie['title']['image']['url'];
     if (isset($arrmovie['ratings']['rating'])) {
-        $imdb_rate = $arrmovie['ratings']['rating'];
+        $imdbRate = $arrmovie['ratings']['rating'];
     }else{
-        $imdb_rate = 0;
+        $imdbRate = 0;
     }
+    $watched = $_GET['watched'];
+    $userRate = $_GET['rate'];
+    $userNotes = $_GET['notes'];
+
    
     
     require_once './connect.php';
-    $sql = "INSERT INTO `movies` (`imdb_id`, `name`, `year`, `type`, `icon`, `imdb_rate`) VALUES (?,?,?,?,?,?)";
+    $sql = "INSERT INTO `movies` (`imdb_id`, `name`, `year`, `type`, `icon`, `imdb_rate`, `watched`, `rate`, `notes`) VALUES (?,?,?,?,?,?,?,?,?)";
     $stmt = $connect->prepare($sql);
-    $stmt->bind_param("ssssss", $imdb_id, $name, $year, $titleType, $image, $imdb_rate);
+    $stmt->bind_param("sssssssss", $imdb_id, $name, $year, $titleType, $image, $imdbRate, $watched, $userRate, $userNotes);
     if ($stmt->execute()) {
         $_SESSION['ok'] = 'Dodano film "' . $arrmovie['title']['title'] . '" z ' . $arrmovie['title']['year'] . " roku!";
         $connect->close();

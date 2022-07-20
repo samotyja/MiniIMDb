@@ -21,7 +21,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Witaj!</h1>
+              <h1 class="m-0"><?php echo $_GET['name']?></h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
@@ -78,7 +78,8 @@ ALERT;
                   <div class="bs-stepper-content">
                     <!-- your steps content here -->
                     <div id="logins-part" class="content" role="tabpanel" aria-labelledby="logins-part-trigger">
-                    <form method="GET" action="">
+                    <form method="GET" action="../scripts/add_movie.php">
+                      <input type="hidden" name="imdb_id" value="<?php echo $_GET['imdb_id']?>">
                     <div class="form-group">
                         <label>Obejrzany?</label>
                         <select name="watched" class="custom-select">
@@ -105,11 +106,11 @@ ALERT;
                     </div>
                     <div id="information-part" class="content" role="tabpanel" aria-labelledby="information-part-trigger">
                     <div class="form-group">
-                        <label>Notatki</label>
-                        <textarea class="form-control" rows="3" placeholder="Wpisz swoje notatki..." style="height: 114px;"></textarea>
+                        <label>Notatki (max 300 znaków)</label>
+                        <textarea name="notes" maxlength="300" class="form-control" rows="3" placeholder="Wpisz swoje notatki..." style="height: 114px;"></textarea>
                     </div>
-                      <button class="btn btn-primary prevent" onclick="stepper.previous()">Previous</button>
-                      <button type="submit" class="btn btn-primary">Submit</button>
+                      <button class="btn btn-primary prevent" onclick="stepper.previous()">Poprzedni</button>
+                      <button type="submit" class="btn btn-primary">Zapisz</button>
                     </form>
                     </div>
                   </div>

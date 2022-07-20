@@ -103,6 +103,7 @@
                   }
 
                   $url = $value['id'];
+                  $title = $value['title'];
                   $id = $url;
                   $id = substr($id, 7);
                   $id = substr($id, 0, -1);
@@ -132,7 +133,7 @@
                         <i class="ion ion-bag"></i>
                       </div>
                       <a href="https://www.imdb.com$url" target="_blank" class="small-box-footer">Szczegóły</a>
-                      <button onclick="location.href='../scripts/add_movie.php?imdb_id=$id'" type="button" class="btn btn-block btn-success">DODAJ</button>
+                      <button onclick="location.href='./add_movie.php?imdb_id=$id&name=$title'" type="button" class="btn btn-block btn-success">DODAJ</button>
                     </div>
                   </div>    
 DESC;
