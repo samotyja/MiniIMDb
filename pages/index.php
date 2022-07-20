@@ -58,15 +58,15 @@ ALERT;
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="./scripts/add_movie.php" method="GET">
+                <form action="./imdb.php" method="GET">
                   <div class="card-body">
                     <div class="form-group">
-                      <label for="exampleInputEmail1">ID</label>
-                      <input type="text" class="form-control" placeholder="Podaj ID filmu" name="imdb_id">
+                      <label for="exampleInputEmail1">Przeszukaj IMDb</label>
+                      <input type="text" class="form-control" placeholder="Wyszukaj film..." name="search">
                     </div>
                   </div>
                   <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">DODAJ</button>
+                    <button type="submit" class="btn btn-primary">SZUKAJ</button>
                   </div>
                 </form>
               </div>
@@ -83,14 +83,14 @@ ALERT;
                 <form>
                   <div class="card-body">
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Koniec adresu URL (bez /film lub /serial)</label>
-                      <input type="text" disabled class="form-control" id="" placeholder="Podaj koniec adresu URL">
+                      <label for="exampleInputEmail1">Przeszukaj FilmWeb</label>
+                      <input type="text" disabled class="form-control" id="" placeholder="WIP">
                     </div>
                   </div>
                   <!-- /.card-body -->
 
                   <div class="card-footer">
-                    <button type="submit" disabled class="btn btn-primary">DODAJ</button>
+                    <button type="submit" disabled class="btn btn-primary">SZUKAJ</button>
                   </div>
                 </form>
               </div>

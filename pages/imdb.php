@@ -34,22 +34,11 @@
             <div class="row">
               <div class="col-md-8 offset-md-2">
                 <div class="input-group">
-                  <input type="text" name="search" class="form-control form-control-lg" value="<?php if (isset($_GET['search'])) {echo $_GET['search'];} ?>">
+                  <input placeholder="Wyszukaj film..." type="text" name="search" class="form-control form-control-lg" value="<?php if (isset($_GET['search'])) {echo $_GET['search'];} ?>">
                   <div class="input-group-append">
                     <button type="submit" class="btn btn-lg btn-default"><i class="fa fa-search"></i></button>
                   </div>
                 </div>
-              </div>
-            </div>
-            <br>
-            <div class="row offset-md-2">
-              <div class="col-sm-1">
-                <label>Typ:</label>
-                <select onchange="this.form.submit()" name="type" class="form-control">
-                  <option disabled value="-">-</option>
-                  <option disabled value="movie">Film</option>
-                  <option disabled value="tvSeries">Serial</option>
-                </select>
               </div>
             </div>
           </div>
@@ -116,8 +105,10 @@
 
                   if (($titleType == 'Serial') && (isset($value['numberOfEpisodes']))) {
                     $durationDetails = '<i class="mr-2 fas fa-sort-numeric-up"></i>'.$value['numberOfEpisodes'].' Ilość odcinków';
-                  }else{
+                  }elseif (($titleType == 'Film')&& (isset($value['runningTimeInMinutes']))){
                     $durationDetails = '<i class="mr-2 fas fa-sort-numeric-up"></i>'.$value['runningTimeInMinutes'].' minut';
+                  }else{
+                    $durationDetails = "";
                   }
 
                   if (($titleType == 'Serial') && (isset($value['seriesEndYear']))) {
